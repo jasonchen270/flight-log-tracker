@@ -1,0 +1,16 @@
+{
+  "name": "flight-log-tracker",
+  "version": "0.2.1",
+  "private": true,
+  "description": "Flight hours logbook for student pilots (React + Express + Postgres)",
+  "workspaces": [
+    "server",
+    "client"
+  ],
+  "scripts": {
+    "dev": "npm run dev --workspace=server & npm run dev --workspace=client",
+    "build": "npm run build --workspace=client",
+    "start": "npm run start --workspace=server",
+    "migrate": "npm run migrate --workspace=server"
+  }
+}

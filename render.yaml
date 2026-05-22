@@ -1,0 +1,31 @@
+# Render Blueprint: one web service + one Postgres database, both on free tier.
+# Caveats of free tier (relevant for student pilots logging real flights):
+#   - Free Postgres expires after 90 days; export CSV before then if not paying.
+#   - Free web service spins down after ~15 min idle (next request takes ~30s).
+# Both are accepted for a 12-user student club; this file documents them rather
+# than working around them.
+
+databases:
+    - name: flight-log-db
+      databaseName: flight_log
+      plan: free
+      postgresMajorVersion: 16
+
+services:
+    - type: web
+      name: flight-log
+      runtime: node
+      plan: free
+      buildCommand: npm install && npm install --workspace=client && npm install --workspace=server && npm run build --workspace=client && npm run migrate --workspace=server
+      startCommand: npm run start --workspace=server
+      envVars:
+          - key: DATABASE_URL
+            fromDatabase:
+                name: flight-log-db
+                property: connectionString
+          - key: CLIENT_ORIGIN
+            value: https://flight-log.onrender.com
+          - key: PORT
+            value: 10000
+          - key: NODE_VERSION
+            value: 20.11.1
