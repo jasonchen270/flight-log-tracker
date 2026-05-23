@@ -1,19 +1,13 @@
 # Flight Log Tracker
 
-A small flight-hours logbook for student pilots. Built for ~12 classmates in an
-aviation club to track training time, landings, and CFI endorsements; deployed
-to Render's free tier so nobody pays a monthly bill.
+A small flight-hours logbook for student pilots, built for ~12 classmates in an aviation club to track training time, landings, and CFI endorsements. It uses a normalized Postgres 16 schema, a Node 20 + Express 4 API with hand-written SQL via `pg` (no ORM), and a React 18 + Vite single-page client served statically by the Express process in production.
 
-## Stack
+## Prerequisites
 
-| Layer    | Choice                                  | Why                                                                                  |
-| -------- | --------------------------------------- | ------------------------------------------------------------------------------------ |
-| Database | Postgres 16 (Render free)               | Normalized schema with a separate `endorsements` table                               |
-| API      | Node 20 + Express 4 + `pg`              | No ORM; the table count is small enough that hand-written SQL stays readable         |
-| Client   | React 18 + Vite                         | Single-page app, served statically by the Express process in production              |
-| Deploy   | Render blueprint (`render.yaml`)        | One free web service + one free Postgres, both provisioned from the file in this repo |
+- Node 20
+- Postgres 16
 
-## Local development
+## Installation
 
 ```bash
 # 1. Postgres
@@ -24,12 +18,22 @@ cd server
 cp .env.example .env       # edit DATABASE_URL if needed
 npm install
 npm run migrate            # schema + seed
-npm run dev                # API on :4000
 
 # 3. Client (in another terminal)
 cd client
 npm install
-npm run dev                # Vite on :5173
+```
+
+## Usage
+
+```bash
+# Server (API on :4000)
+cd server
+npm run dev
+
+# Client (Vite on :5173)
+cd client
+npm run dev
 ```
 
 Open <http://localhost:5173>. The Vite dev server proxies `/api/*` to the
