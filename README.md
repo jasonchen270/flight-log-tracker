@@ -34,17 +34,3 @@ npm run dev                # Vite on :5173
 
 Open <http://localhost:5173>. The Vite dev server proxies `/api/*` to the
 Express server so you don't need to worry about CORS.
-
-## Deploy to Render
-
-1. Push this repo to GitHub.
-2. In Render, **New → Blueprint** and point it at the repo. It reads
-   `render.yaml` and provisions both the Postgres DB and the web service.
-3. First boot runs `npm run migrate` so the schema lands automatically.
-
-### Free tier caveats
-
-- The free Postgres expires after 90 days. Download a CSV (via the in-app
-  button) before it does if you're staying on the free plan.
-- The free web service spins down after ~15 minutes idle. First request after
-  a cold start takes ~30 seconds; subsequent requests are normal.
