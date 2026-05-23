@@ -48,19 +48,3 @@ Express server so you don't need to worry about CORS.
   button) before it does if you're staying on the free plan.
 - The free web service spins down after ~15 minutes idle. First request after
   a cold start takes ~30 seconds; subsequent requests are normal.
-
-## API surface
-
-| Method | Path                                              | Notes                                                  |
-| ------ | ------------------------------------------------- | ------------------------------------------------------ |
-| GET    | `/api/health`                                     | Liveness probe                                         |
-| GET    | `/api/me`                                         | Echoes pilot resolved from `x-pilot-email`             |
-| GET    | `/api/flights?aircraft_type=&from=&to=`           | List, with optional filters                            |
-| GET    | `/api/flights/summary`                            | Totals (hours, landings, count)                        |
-| GET    | `/api/flights/export.csv`                         | Full export                                            |
-| GET    | `/api/flights/:id`                                | Single flight + its endorsements                       |
-| POST   | `/api/flights`                                    | Create                                                 |
-| PUT    | `/api/flights/:id`                                | Update                                                 |
-| DELETE | `/api/flights/:id`                                | Delete                                                 |
-| POST   | `/api/flights/:id/endorsements`                   | Add endorsement (kind, instructor, CFI, signed_at)     |
-| DELETE | `/api/flights/:id/endorsements/:endorsementId`    | Remove endorsement                                     |
