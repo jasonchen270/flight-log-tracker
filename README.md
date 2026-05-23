@@ -21,7 +21,6 @@ createdb flight_log
 
 # 2. Server
 cd server
-cp .env.example .env       # edit DATABASE_URL if needed
 npm install
 npm run migrate            # schema + seed
 npm run dev                # API on :4000
