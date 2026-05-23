@@ -1,6 +1,6 @@
 # Flight Log Tracker
 
-A small flight-hours logbook for student pilots, built for ~12 classmates in an aviation club to track training time, landings, and CFI endorsements. It uses a normalized Postgres 16 schema, a Node 20 + Express 4 API with hand-written SQL via `pg` (no ORM), and a React 18 + Vite single-page client served statically by the Express process in production.
+A small flight-hours logbook for student pilots, built for ~12 classmates in an aviation club to track training time, landings, and CFI endorsements. It uses a normalized Postgres schema, a Node + Express API with hand-written SQL via `pg` (no ORM), and a React + Vite single-page client.
 
 ## Prerequisites
 
