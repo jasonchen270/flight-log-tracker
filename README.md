@@ -64,36 +64,3 @@ Express server so you don't need to worry about CORS.
 | DELETE | `/api/flights/:id`                                | Delete                                                 |
 | POST   | `/api/flights/:id/endorsements`                   | Add endorsement (kind, instructor, CFI, signed_at)     |
 | DELETE | `/api/flights/:id/endorsements/:endorsementId`    | Remove endorsement                                     |
-
-## Layout
-
-```
-flight-log-tracker/
-├── render.yaml              # one-click Render deploy
-├── package.json             # npm workspaces root
-├── server/
-│   ├── db/
-│   │   ├── schema.sql       # flights + endorsements + indexes
-│   │   ├── seed.sql         # demo data
-│   │   └── migrate.js       # applies schema + seed
-│   └── src/
-│       ├── index.js         # Express entry, route table
-│       ├── db.js            # pg Pool, custom type parsers
-│       ├── dates.js         # ISO date validation
-│       ├── flights.js       # CRUD + summary
-│       ├── endorsements.js  # add/remove
-│       └── csv.js           # RFC 4180 export
-└── client/
-    ├── index.html
-    ├── vite.config.js
-    └── src/
-        ├── main.jsx
-        ├── App.jsx
-        ├── api.js
-        ├── styles.css
-        └── components/
-            ├── FlightForm.jsx
-            ├── FlightList.jsx
-            ├── SummaryCard.jsx
-            └── EndorsementModal.jsx
-```
